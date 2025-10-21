@@ -1,6 +1,10 @@
-/.git
-/node_modules
-.dockerignore
-.env
-Dockerfile
-fly.toml
+node_modules
+.nuxt
+.output
+.env*
+!.env.production
+*.log
+.git
+.gitignore
+README.md
+BOT_SETUP.md

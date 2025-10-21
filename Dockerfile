@@ -1,43 +1,31 @@
-# syntax = docker/dockerfile:1
+# Use newer Node version that matches requirements
+FROM node:22.12-slim
 
-# Adjust NODE_VERSION as desired
-ARG NODE_VERSION=22.0.0
-FROM node:${NODE_VERSION}-slim AS base
-
-LABEL fly_launch_runtime="Nuxt"
-
-# Nuxt app lives here
+# Set working directory
 WORKDIR /app
 
-# Set production environment
-ENV NODE_ENV="production"
-
-
-# Throw-away build stage to reduce size of final image
-FROM base AS build
-
-# Install packages needed to build node modules
+# Install dependencies for native modules
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3
+    apt-get install --no-install-recommends -y \
+    python3 \
+    make \
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install node modules
-COPY package-lock.json package.json ./
-RUN npm ci --include=dev
+# Copy package files
+COPY package*.json ./
 
-# Copy application code
+# Install ALL dependencies (bot needs them)
+RUN npm install
+
+# Copy application files
 COPY . .
 
-# Build application
-RUN npm run build
+# Set environment to production
+ENV NODE_ENV=production
 
-
-# Final stage for app image
-FROM base
-
-# Copy built application
-COPY --from=build /app/.output /app/.output
-
-# Start the server by default, this can be overwritten at runtime
+# Expose port (optional, for health checks)
 EXPOSE 3000
-ENV HOST=0
-CMD [ "node", ".output/server/index.mjs" ]
+
+# Start the bot
+CMD ["npm", "run", "bot"]
