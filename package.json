@@ -1,0 +1,51 @@
+{
+	"name": "bateriku-web",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "nuxt dev --dotenv .env.development",
+		"staging": "nuxt dev --dotenv .env.staging",
+		"start-staging": "node .output/server/index.mjs",
+		"start-production": "node .output/server/index.mjs",
+		"build-staging": "nuxt build --dotenv .env.staging",
+		"build-production": "nuxt build --dotenv .env.production",
+		"build": "nuxt build",
+		"generate": "nuxt generate",
+		"preview": "nuxt preview",
+		"postinstall": "nuxt prepare",
+		"upgrade": "nuxt upgrade",
+		"clean": "nuxt cleanup",
+		"bot": "tsx run-bot.ts"
+	},
+	"dependencies": {
+		"@nuxt/image": "^1.8.1",
+		"@types/node-telegram-bot-api": "^0.64.11",
+		"@vueuse/core": "^12.7.0",
+		"apexcharts": "^4.3.0",
+		"dotenv": "^17.2.3",
+		"echarts": "^5.6.0",
+		"heroicons": "^2.2.0",
+		"lottie-web": "^5.12.2",
+		"node-telegram-bot-api": "^0.66.0",
+		"nuxt": "^3.15.0",
+		"vue": "latest",
+		"vue-echarts": "^7.0.3",
+		"vue-router": "latest",
+		"vue-toast-notification": "^3.1.3",
+		"vue3-apexcharts": "^1.8.0",
+		"yup": "^1.6.1"
+	},
+	"devDependencies": {
+		"@nuxtjs/google-fonts": "^3.2.0",
+		"@nuxtjs/i18n": "^9.2.0",
+		"@nuxtjs/sitemap": "^7.0.2",
+		"@nuxtjs/tailwindcss": "^6.13.1",
+		"@pinia/nuxt": "^0.10.1",
+		"nuxt-svgo": "^4.0.9",
+		"tsx": "^4.20.6"
+	},
+	"engines": {
+		"npm": ">=10.0.0",
+		"node": ">=22.0.0"
+	}
+}

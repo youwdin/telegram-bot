@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		/* IE and Edge */
+		scrollbar-width: none;
+		/* Firefox */
+	}
+}
+
+html {
+	font-size: 12px;
+	@apply scroll-smooth;
+
+	@screen sm {
+		font-size: 14px;
+	}
+
+	@screen md {
+		font-size: 15px;
+	}
+
+	@screen lg {
+		font-size: 16px;
+	}
+}
