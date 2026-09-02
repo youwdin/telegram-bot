@@ -5,7 +5,7 @@ This bot monitors a source Telegram channel and automatically copies/forwards al
 ## Prerequisites
 
 ✅ Bot already created (@Zusfx_bot)
-✅ Bot token obtained: `8390132425:AAGd5qqhtr_EeRYRWxPxI5dCuIlvJzQ18iU`
+✅ Bot token obtained: `<YOUR_BOT_TOKEN>`
 
 ## Setup Steps
 
@@ -28,7 +28,7 @@ You need the channel IDs for both your source and destination channels.
 **Method 3: Using the bot itself**
 1. Add your bot (@Zusfx_bot) as admin to your channel
 2. Send a message to the channel
-3. Go to: `https://api.telegram.org/bot8390132425:AAGd5qqhtr_EeRYRWxPxI5dCuIlvJzQ18iU/getUpdates`
+3. Go to: `https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getUpdates`
 4. Look for `"chat":{"id":-1001234567890}` in the JSON response
 
 ### 2. Configure Environment Variables
@@ -39,8 +39,8 @@ Edit `.env.development` and add your channel IDs:
 # Source channel (where signals come from)
 SOURCE_CHANNEL_ID=-1001234567890
 
-# Destination channel (where to post signals)
-DESTINATION_CHANNEL_ID=-1009876543210
+# Destination channel(s), comma-separated (where to post signals)
+DESTINATION_CHANNEL_IDS=-1009876543210
 ```
 
 ### 3. Add Bot as Admin to Both Channels
