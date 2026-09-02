@@ -21,7 +21,13 @@ logs
 .fleet
 .idea
 
-# # Local env files
-# .env
-# .env.*
-# !.env.example
+# Local env files
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Other build/test outputs
+build
+coverage
+.next
